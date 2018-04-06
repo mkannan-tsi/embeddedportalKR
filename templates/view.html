@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+Template Name: Oleald
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html lang="">
+
+<head>
+<title>Tableau Embedded Analytics</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="../static/css/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+<body>
+        <script type="text/javascript" 
+            src="https://public.tableau.com/javascripts/api/tableau-2.min.js">
+        </script>
+        <script type="text/javascript">
+            var viz;
+            viz_toggle = 0;
+            function initViz() {
+                var url = "{{url}}";
+                var containerDiv = document.getElementById("vizContainer"),
+                    options = {
+                        hideTabs: true,
+                    };
+                
+                viz = new tableau.Viz(containerDiv, url, options); 
+            }
+
+            function exportToPDF() {
+                viz.showExportPDFDialog();
+            }
+
+            function revert() {
+                viz.revertAllAsync();
+            }
+
+            function downloadData() {
+                viz.showDownloadWorkbookDialog();
+            }
+
+            function showOrHideTheViz() {
+                if (viz_toggle == 0) {
+                    viz.hide();
+                    viz_toggle = 1;
+                }
+                else {
+                    viz.show();
+                    viz_toggle = 0;
+                }
+            }
+        </script>
+</body>
+
+<body onload="initViz();" id="top">
+<div class="bgded overlay light" style="background-image:url('../static/images/pawel-nolbert-291146.jpg');"> 
+  <div class="wrapper row0">
+    <div id="topbar" class="hoc clear"> 
+      <div class="fl_left"> 
+        <ul class="nospace">
+          <li><i class="fa fa-phone"></i> 007 986 517 564</li>
+          <li><i class="fa fa-envelope-o"></i> sales@tableau.com </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear"> 
+      <div id="logo" class="fl_left">
+        <h1>Tableau KR Embedded Analytics Seminar</h1>
+      </div>
+    </header>
+  </div>
+
+  <div style="margin-top:3vh;" class="hoc clear"> 
+      <div class="center-div" id="vizContainer"></div> 
+      <div class="content">  
+        <div style="margin-top:4vh; margin-left: 1vh;" id="gallery">
+          <figure>
+            <ul class="nospace clear">
+              <li class="one_quarter first"><button class="btn" onclick="revert();" >Clear All Selections</button></li>
+              <li class="one_quarter"><button class="btn" onclick="exportToPDF();">Export the Viz to PDF</button></li>
+              <li class="one_quarter"><button class="btn" onclick="downloadData();" >Download Workbook</button></li>
+              <li class="one_quarter"><button class="btn" onclick="showOrHideTheViz()">Show (OR Hide) the Viz</button></li>
+            </ul>
+          </figure>
+        </div>  
+      </div>
+  </div>
+</div>
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <p class="fl_left">Copyright &copy; 2017 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+  </div>
+</div>
+<!-- JAVASCRIPTS -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/jquery.backtotop.js"></script>
+<script src="../static/js/jquery.mobilemenu.js"></script>
+</body>
+</html>
